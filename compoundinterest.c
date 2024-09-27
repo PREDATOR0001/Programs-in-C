@@ -1,23 +1,18 @@
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
-int main()
+// C program to calculate Compound Interest
+int main() 
 {
-	double principle , rate , time , n, CI, A;
+  double principal = 10000; 
+  double rate = 5; 
 
-	clrscr();
-	printf("enter the principle amount: ");
-	scanf("%lf" , &principle);
-	printf("enter the annual interest rate :");
-	scanf("%lf", &rate);
-	rate = rate/100;
-	printf("enter the number of times that interest is compounded annually: ");
-	scanf("%lf", &n);
-	
-	A = principle* pow((1+rate/n) , n*time);
-	CI = A-principle;
-	printf(" The compound interest is: %.21f\n" , CI);
-	return 0;
-	getch();
-	
-	}
+  double time = 2; 
+  double Amount = principal * 
+                  ((pow((1 + rate / 100), 
+                    time)));
+  double CI = Amount - principal;
+ 
+  printf("Compound Interest is : %lf",CI);
+  return 0;
+}
