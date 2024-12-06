@@ -1,55 +1,54 @@
 #include <stdio.h>
 
-#define MAX_BOOKS 3
-
-struct Book {
-    char title[100];
-    char author[50];
-    float price;
-    int stock;
+struct Date {
+    int day;
+    int month;
+    int year;
 };
+int isLeapYear(int year) {
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+        return 1;
+    return 0;
+}
 
-void displayBooksWithStockGreaterThan10(struct Book books[], int n) {
-    printf("\nBooks with stock greater than 10:\n");
-    int found = 0;
-    for (int i = 0; i < n; i++) {
-        if (books[i].stock > 10) {
-            printf("\nBook %d:\n", i + 1);
-            printf("Title: %s\n", books[i].title);
-            printf("Author: %s\n", books[i].author);
-            printf("Price: %.2f\n", books[i].price);
-            printf("Stock: %d\n", books[i].stock);
-            found = 1;
-        }
+int calculateDays(struct Date date) {
+    int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    
+
+    int totalDays = (date.year - 1) * 365 + (date.year - 1) / 4 - (date.year - 1) / 100 + (date.year - 1) / 400;
+    
+
+    for (int i = 0; i < date.month - 1; i++) {
+        totalDays += daysInMonth[i];
     }
-    if (!found) {
-        printf("No books with stock greater than 10.\n");
+
+
+    totalDays += date.day;
+
+
+    if (isLeapYear(date.year) && date.month > 2) {
+        totalDays++;
     }
+
+    return totalDays;
+}
+
+int calculateDifference(struct Date date1, struct Date date2) {
+    return calculateDays(date2) - calculateDays(date1);
 }
 
 int main() {
-    struct Book books[MAX_BOOKS];
+    struct Date date1, date2;
 
-    for (int i = 0; i < MAX_BOOKS; i++) {
-        printf("\nEnter details for book %d:\n", i + 1);
-        printf("Enter book title: ");
-        fgets(books[i].title, sizeof(books[i].title), stdin);  
-        books[i].title[strcspn(books[i].title, "\n")] = '\0'; 
 
-        printf("Enter book author: ");
-        fgets(books[i].author, sizeof(books[i].author), stdin);  
-        books[i].author[strcspn(books[i].author, "\n")] = '\0';  
+    printf("Enter the first date (day month year): ");
+    scanf("%d %d %d", &date1.day, &date1.month, &date1.year);
 
-        printf("Enter book price: ");
-        scanf("%f", &books[i].price);
+    printf("Enter the second date (day month year): ");
+    scanf("%d %d %d", &date2.day, &date2.month, &date2.year);
 
-        printf("Enter book stock: ");
-        scanf("%d", &books[i].stock);
-
-        getchar();  
-    }
-
-    displayBooksWithStockGreaterThan10(books, MAX_BOOKS);
+    int diff = calculateDifference(date1, date2);
+    printf("The difference between the two dates is %d days.\n", diff);
 
     return 0;
 }
