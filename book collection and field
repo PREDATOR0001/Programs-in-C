@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+#define MAX_BOOKS 3
+
+struct Book {
+    char title[100];
+    char author[50];
+    float price;
+    int stock;
+};
+
+void displayBooksWithStockGreaterThan10(struct Book books[], int n) {
+    printf("\nBooks with stock greater than 10:\n");
+    int found = 0;
+    for (int i = 0; i < n; i++) {
+        if (books[i].stock > 10) {
+            printf("\nBook %d:\n", i + 1);
+            printf("Title: %s\n", books[i].title);
+            printf("Author: %s\n", books[i].author);
+            printf("Price: %.2f\n", books[i].price);
+            printf("Stock: %d\n", books[i].stock);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No books with stock greater than 10.\n");
+    }
+}
+
+int main() {
+    struct Book books[MAX_BOOKS];
+
+    for (int i = 0; i < MAX_BOOKS; i++) {
+        printf("\nEnter details for book %d:\n", i + 1);
+        printf("Enter book title: ");
+        fgets(books[i].title, sizeof(books[i].title), stdin);
+        books[i].title[strcspn(books[i].title, "\n")] = '\0';  
+
+        printf("Enter book author: ");
+        fgets(books[i].author, sizeof(books[i].author), stdin);  
+        books[i].author[strcspn(books[i].author, "\n")] = '\0';  
+        printf("Enter book price: ");
+        scanf("%f", &books[i].price);
+
+        printf("Enter book stock: ");
+        scanf("%d", &books[i].stock);
+
+
+        getchar();  
+    }
+
+    displayBooksWithStockGreaterThan10(books, MAX_BOOKS);
+
+    return 0;
+}
