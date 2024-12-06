@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+#define MAX_CARS 5
+
+struct Car {
+    char brand[50];
+    char model[50];
+    int year;
+    float price;
+};
+
+void displayOldCars(struct Car cars[], int currentYear, int n) {
+    printf("\nCars older than the year %d:\n", currentYear);
+    int found = 0;
+    for (int i = 0; i < n; i++) {
+        if (cars[i].year < currentYear) {
+            printf("\nCar %d:\n", i + 1);
+            printf("Brand: %s\n", cars[i].brand);
+            printf("Model: %s\n", cars[i].model);
+            printf("Year: %d\n", cars[i].year);
+            printf("Price: %.2f\n", cars[i].price);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No cars are older than the year %d.\n", currentYear);
+    }
+}
+
+int main() {
+    struct Car cars[MAX_CARS];
+
+    for (int i = 0; i < MAX_CARS; i++) {
+        printf("\nEnter details for car %d:\n", i + 1);
+        printf("Enter car brand: ");
+        scanf("%s", cars[i].brand);
+        printf("Enter car model: ");
+        scanf("%s", cars[i].model);
+        printf("Enter car year: ");
+        scanf("%d", &cars[i].year);
+        printf("Enter car price: ");
+        scanf("%f", &cars[i].price);
+    }
+
+    int currentYear;
+    printf("\nEnter the current year: ");
+    scanf("%d", &currentYear);
+    displayOldCars(cars, currentYear, MAX_CARS);
+
+    return 0;
+}
