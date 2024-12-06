@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+#define MAX_PRODUCTS 5
+
+// Define a structure for the price (nested structure)
+struct Price {
+    float costPrice;
+    float sellingPrice;
+};
+
+// Define a structure for the product (ID, name, and price)
+struct Product {
+    int id;
+    char name[50];
+    struct Price price;  // Nested structure for price
+};
+
+// Function to calculate the profit margin
+float calculateProfitMargin(struct Product product) {
+    return ((product.price.sellingPrice - product.price.costPrice) / product.price.costPrice) * 100;
+}
+
+// Function to display products with a profit margin greater than 10%
+void displayProductsWithProfitMargin(struct Product products[], int n) {
+    printf("\nProducts with a profit margin greater than 10%%:\n");
+    int found = 0;
+    
+    for (int i = 0; i < n; i++) {
+        float margin = calculateProfitMargin(products[i]);
+        
+        if (margin > 10) {
+            printf("\nProduct ID: %d\n", products[i].id);
+            printf("Product Name: %s\n", products[i].name);
+            printf("Cost Price: %.2f\n", products[i].price.costPrice);
+            printf("Selling Price: %.2f\n", products[i].price.sellingPrice);
+            printf("Profit Margin: %.2f%%\n", margin);
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("No products with profit margin greater than 10%%.\n");
+    }
+}
+
+int main() {
+    struct Product products[MAX_PRODUCTS];
+
+    // Input product details
+    for (int i = 0; i < MAX_PRODUCTS; i++) {
+        printf("\nEnter details for product %d:\n", i + 1);
+        printf("Enter product ID: ");
+        scanf("%d", &products[i].id);
+        
+        printf("Enter product name: ");
+        getchar();  // To consume the newline character left by previous scanf
+        fgets(products[i].name, sizeof(products[i].name), stdin);
+        products[i].name[strcspn(products[i].name, "\n")] = '\0'; // Remove the newline character from name
+        
+        printf("Enter cost price: ");
+        scanf("%f", &products[i].price.costPrice);
+        
+        printf("Enter selling price: ");
+        scanf("%f", &products[i].price.sellingPrice);
+    }
+
+    // Display products with profit margin greater than 10%
+    displayProductsWithProfitMargin(products, MAX_PRODUCTS);
+
+    return 0;
+}
