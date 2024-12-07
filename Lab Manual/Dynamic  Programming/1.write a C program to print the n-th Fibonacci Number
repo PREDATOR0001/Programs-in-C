@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+// Function to find the n-th Fibonacci number using Dynamic Programming (Tabulation)
+long long fibonacci(int n) {
+    // Handle base cases
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+
+    // Create an array to store Fibonacci numbers
+    long long fib[n + 1];
+
+    // Base cases
+    fib[0] = 0;
+    fib[1] = 1;
+
+    // Fill the array using the previously computed Fibonacci numbers
+    for (int i = 2; i <= n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+
+    // Return the n-th Fibonacci number
+    return fib[n];
+}
+
+int main() {
+    int n;
+
+    // Input: n-th Fibonacci number to compute
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    // Check if n is a non-negative number
+    if (n < 0) {
+        printf("Please enter a non-negative integer.\n");
+        return 1;
+    }
+
+    // Output: The n-th Fibonacci number
+    printf("The %d-th Fibonacci number is: %lld\n", n, fibonacci(n));
+
+    return 0;
+}
