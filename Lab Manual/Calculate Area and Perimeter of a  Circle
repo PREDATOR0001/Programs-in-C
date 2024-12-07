@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <math.h> // For using the constant M_PI
+
+int main() {
+    float radius, area, perimeter;
+
+    // Ask the user for the radius of the circle
+    printf("Enter the radius of the circle: ");
+    scanf("%f", &radius);
+
+    // Calculate the area and perimeter (circumference)
+    area = M_PI * radius * radius;           // Area = π * r^2
+    perimeter = 2 * M_PI * radius;           // Perimeter (Circumference) = 2 * π * r
+
+    // Display the results
+    printf("The area of the circle is: %.2f\n", area);
+    printf("The perimeter (circumference) of the circle is: %.2f\n", perimeter);
+
+    return 0;
+}
