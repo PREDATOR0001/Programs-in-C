@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to reverse a portion of the string
+void reverse(char str[], int start, int end) {
+    while (start < end) {
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+// Function to reverse the order of words in the string
+void reverseWord(char str[]) {
+    int n = strlen(str);
+    int start = 0;
+
+    // Reverse the entire string
+    reverse(str, 0, n - 1);
+
+    // Reverse each word in the reversed string
+    for (int end = 0; end <= n; end++) {
+        if (str[end] == ' ' || str[end] == '\0') {
+            reverse(str, start, end - 1);
+            start = end + 1;
+        }
+    }
+}
+
+int main() {
+    char str[] = "I love my India";
+
+    printf("Original string: %s\n", str);
+
+    // Reverse the order of words in the string
+    reverseWord(str);
+
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}
