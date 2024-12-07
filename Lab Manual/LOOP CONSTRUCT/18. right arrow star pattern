@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int rows, i, j;
+
+    // Input the number of rows from the user
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+
+    // Print the upper half of the right arrow
+    for (i = 1; i <= rows; i++) {
+        for (j = 1; j < i; j++) {
+            printf(" ");
+        }
+        printf("*\n");
+    }
+
+    // Print the lower half of the right arrow
+    for (i = rows - 1; i >= 1; i--) {
+        for (j = 1; j < i; j++) {
+            printf(" ");
+        }
+        printf("*\n");
+    }
+
+    return 0;
+}
