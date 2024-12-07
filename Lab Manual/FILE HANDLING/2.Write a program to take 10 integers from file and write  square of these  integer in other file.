@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    FILE *inputFile, *outputFile;
+    int num, i;
+
+    // Open input file in read mode
+    inputFile = fopen("input.txt", "r");
+    if (inputFile == NULL) {
+        printf("Could not open input file input.txt\n");
+        return 1;
+    }
+
+    // Open output file in write mode
+    outputFile = fopen("output.txt", "w");
+    if (outputFile == NULL) {
+        printf("Could not open output file output.txt\n");
+        fclose(inputFile);
+        return 1;
+    }
+
+    // Read 10 integers from input file and write their squares to output file
+    for (i = 0; i < 10; i++) {
+        if (fscanf(inputFile, "%d", &num) != 1) {
+            printf("Error reading integer from input file\n");
+            fclose(inputFile);
+            fclose(outputFile);
+            return 1;
+        }
+        fprintf(outputFile, "%d\n", num * num);
+    }
+
+    // Close the files
+    fclose(inputFile);
+    fclose(outputFile);
+
+    printf("Squares of integers written to output.txt successfully.\n");
+
+    return 0;
+}
