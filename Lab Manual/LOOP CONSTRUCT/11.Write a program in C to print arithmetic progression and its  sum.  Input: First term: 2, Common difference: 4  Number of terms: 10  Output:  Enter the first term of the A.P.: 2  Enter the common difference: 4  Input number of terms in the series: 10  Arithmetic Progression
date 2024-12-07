@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int firstTerm, commonDifference, numberOfTerms;
+    int sum = 0;
+
+    // Input the first term, common difference, and number of terms from the user
+    printf("Enter the first term of the A.P.: ");
+    scanf("%d", &firstTerm);
+    printf("Enter the common difference: ");
+    scanf("%d", &commonDifference);
+    printf("Input number of terms in the series: ");
+    scanf("%d", &numberOfTerms);
+
+    // Print the arithmetic progression and calculate the sum
+    printf("Arithmetic Progression: ");
+    for (int i = 0; i < numberOfTerms; i++) {
+        int term = firstTerm + i * commonDifference;
+        printf("%d ", term);
+        sum += term;
+    }
+
+    // Output the sum of the arithmetic progression
+    printf("\nThe sum of the AP series is: %d\n", sum);
+
+    return 0;
+}
