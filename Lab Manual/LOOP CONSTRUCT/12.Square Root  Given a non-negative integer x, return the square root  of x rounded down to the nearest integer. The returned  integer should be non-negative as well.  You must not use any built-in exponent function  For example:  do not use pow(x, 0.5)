@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    int x, sqrt = 0;
+
+    // Input the non-negative integer from the user
+    printf("Enter a non-negative integer: ");
+    scanf("%d", &x);
+
+    // Calculate the square root using a simple iterative approach
+    while ((sqrt + 1) * (sqrt + 1) <= x) {
+        sqrt++;
+    }
+
+    // Output the square root rounded down to the nearest integer
+    printf("The square root of %d rounded down to the nearest integer is: %d\n", x, sqrt);
+
+    return 0;
+}
