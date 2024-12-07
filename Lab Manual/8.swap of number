@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+    int a, b, temp;
+
+    // Input two numbers
+    printf("Enter the first number: ");
+    scanf("%d", &a);
+    printf("Enter the second number: ");
+    scanf("%d", &b);
+
+    // Swapping using a third variable
+    temp = a;
+    a = b;
+    b = temp;
+
+    printf("After swapping (using third variable): a = %d, b = %d\n", a, b);
+
+    // Swapping without using a third variable
+    a = a + b;
+    b = a - b;
+    a = a - b;
+
+    printf("After swapping (without third variable): a = %d, b = %d\n", a, b);
+
+    // Swapping using comma operator within a single statement
+    a = (a + b, b = a - b, a = a - b);
+
+    printf("After swapping (using comma operator): a = %d, b = %d\n", a, b);
+
+    return 0;
+}
