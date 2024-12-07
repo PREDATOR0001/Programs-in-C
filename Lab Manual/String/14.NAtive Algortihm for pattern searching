@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to search for a pattern in a given text
+void searchPattern(char *text, char *pattern) {
+    int n = strlen(text);
+    int m = strlen(pattern);
+
+    for (int i = 0; i <= n - m; i++) {
+        int j;
+        for (j = 0; j < m; j++) {
+            if (text[i + j] != pattern[j]) {
+                break;
+            }
+        }
+        if (j == m) {
+            printf("Pattern found at index %d\n", i);
+        }
+    }
+}
+
+int main() {
+    char text1[] = "THIS IS A TEST TEXT";
+    char pattern1[] = "TEST";
+    printf("Text: %s, Pattern: %s\n", text1, pattern1);
+    searchPattern(text1, pattern1);
+
+    char text2[] = "AABAACAADAABAABA";
+    char pattern2[] = "AABA";
+    printf("Text: %s, Pattern: %s\n", text2, pattern2);
+    searchPattern(text2, pattern2);
+
+    return 0;
+}
