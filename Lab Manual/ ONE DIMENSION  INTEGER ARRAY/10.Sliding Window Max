@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+// Function to find the maximum in each sliding window
+void maxSlidingWindow(int arr[], int n, int k) {
+    for (int i = 0; i <= n - k; i++) {
+        int max = arr[i];
+        for (int j = 1; j < k; j++) {
+            if (arr[i + j] > max) {
+                max = arr[i + j];
+            }
+        }
+        printf("%d ", max);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr1[] = {1, 2, 3, 1, 4, 5, 2, 3, 6};
+    int k1 = 3;
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+
+    printf("Output for first example:\n");
+    maxSlidingWindow(arr1, n1, k1);
+
+    int arr2[] = {8, 5, 10, 7, 9, 4, 15, 12, 90, 13};
+    int k2 = 4;
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    printf("Output for second example:\n");
+    maxSlidingWindow(arr2, n2, k2);
+
+    return 0;
+}
