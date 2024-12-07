@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define the structure for a hotel
+struct Hotel {
+    char name[50];
+    char address[100];
+    int grade;
+    float roomCharge;
+    int numberOfRooms;
+};
+
+// Function to print hotels of a given grade in order of room charges
+void printHotelsByGrade(struct Hotel hotels[], int n, int grade) {
+    // Sort hotels by room charge
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (hotels[j].roomCharge > hotels[j + 1].roomCharge) {
+                struct Hotel temp = hotels[j];
+                hotels[j] = hotels[j + 1];
+                hotels[j + 1] = temp;
+            }
+        }
+    }
+
+    // Print hotels of the given grade
+    printf("Hotels of grade %d:\n", grade);
+    for (int i = 0; i < n; i++) {
+        if (hotels[i].grade == grade) {
+            printf("Name: %s, Address: %s, Room Charge: %.2f, Number of Rooms: %d\n",
+                   hotels[i].name, hotels[i].address, hotels[i].roomCharge, hotels[i].numberOfRooms);
+        }
+    }
+}
+
+int main() {
+    struct Hotel hotels[] = {
+        {"Hotel A", "Address A", 3, 200.0, 50},
+        {"Hotel B", "Address B", 4, 150.0, 30},
+        {"Hotel C", "Address C", 3, 180.0, 40},
+        {"Hotel D", "Address D", 4, 220.0, 60},
+        {"Hotel E", "Address E", 3, 160.0, 35}
+    };
+    int n = sizeof(hotels) / sizeof(hotels[0]);
+    int grade = 3;
+
+    printHotelsByGrade(hotels, n, grade);
+
+    return 0;
+}
