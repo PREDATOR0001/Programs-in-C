@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+// Function to find the indices of the two numbers that add up to the target
+void twoSum(int nums[], int n, int target) {
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (nums[i] + nums[j] == target) {
+                printf("Indices: [%d, %d]\n", i, j);
+                return;
+            }
+        }
+    }
+    printf("No solution found.\n");
+}
+
+int main() {
+    int nums[] = {2, 7, 11, 15};
+    int target = 9;
+    int n = sizeof(nums) / sizeof(nums[0]);
+
+    twoSum(nums, n, target);
+
+    int nums2[] = {3, 2, 4};
+    target = 6;
+    n = sizeof(nums2) / sizeof(nums2[0]);
+
+    twoSum(nums2, n, target);
+
+    int nums3[] = {3, 3};
+    target = 6;
+    n = sizeof(nums3) / sizeof(nums3[0]);
+
+    twoSum(nums3, n, target);
+
+    return 0;
+}
