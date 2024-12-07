@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main() {
+    FILE *inputFile, *oddFile, *evenFile;
+    int num;
+
+    // Open input file in read mode
+    inputFile = fopen("numbers.txt", "r");
+    if (inputFile == NULL) {
+        printf("Could not open input file numbers.txt\n");
+        return 1;
+    }
+
+    // Open odd and even files in write mode
+    oddFile = fopen("ODD.txt", "w");
+    if (oddFile == NULL) {
+        printf("Could not open output file ODD.txt\n");
+        fclose(inputFile);
+        return 1;
+    }
+
+    evenFile = fopen("EVEN.txt", "w");
+    if (evenFile == NULL) {
+        printf("Could not open output file EVEN.txt\n");
+        fclose(inputFile);
+        fclose(oddFile);
+        return 1;
+    }
+
+    // Read numbers from input file and write to odd or even files
+    while (fscanf(inputFile, "%d", &num) != EOF) {
+        if (num % 2 == 0) {
+            fprintf(evenFile, "%d\n", num);
+        } else {
+            fprintf(oddFile, "%d\n", num);
+        }
+    }
+
+    // Close the files
+    fclose(inputFile);
+    fclose(oddFile);
+    fclose(evenFile);
+
+    printf("Numbers have been separated into ODD.txt and EVEN.txt successfully.\n");
+
+    return 0;
+}
