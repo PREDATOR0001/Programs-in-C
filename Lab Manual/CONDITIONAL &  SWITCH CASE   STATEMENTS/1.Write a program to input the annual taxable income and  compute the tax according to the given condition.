@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    float income, tax = 0;
+
+    // Input the annual taxable income
+    printf("Enter the annual taxable income: ");
+    scanf("%f", &income);
+
+    // Calculate the tax based on the given conditions
+    if (income <= 100000) {
+        tax = 0;
+    } else if (income <= 150000) {
+        tax = (income - 100000) * 0.10;
+    } else if (income <= 250000) {
+        tax = 5000 + (income - 150000) * 0.20;
+    } else {
+        tax = 25000 + (income - 250000) * 0.30;
+    }
+
+    // Output the calculated tax
+    printf("The calculated tax is: Rs. %.2f\n", tax);
+
+    return 0;
+}
