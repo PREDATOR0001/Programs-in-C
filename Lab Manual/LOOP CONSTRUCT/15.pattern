@@ -1,0 +1,24 @@
+ #include <stdio.h>
+
+int main() {
+    int rows, i, j, k;
+
+    // Input the number of rows from the user
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+
+    // Print the pattern
+    for (i = 1; i <= rows; i++) {
+        // Print leading spaces
+        for (j = i; j < rows; j++) {
+            printf(" ");
+        }
+        // Print stars
+        for (k = 1; k <= i; k++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
