@@ -1,0 +1,37 @@
+#include <graphics.h>
+#include <conio.h>
+#include <dos.h>
+
+// Function to draw a cycle
+void drawCycle(int x, int y) {
+    // Draw wheels
+    circle(x, y, 20);
+    circle(x + 100, y, 20);
+
+    // Draw frame
+    line(x, y, x + 50, y - 50);
+    line(x + 50, y - 50, x + 100, y);
+    line(x + 50, y - 50, x + 50, y);
+    line(x + 50, y, x + 75, y - 25);
+    line(x + 75, y - 25, x + 100, y);
+}
+
+int main() {
+    int gd = DETECT, gm;
+    int x = 50, y = 300;
+
+    initgraph(&gd, &gm, "C:\\Turboc3\\BGI");
+
+    while (!kbhit()) {
+        cleardevice();
+        drawCycle(x, y);
+        delay(100);
+        x += 5;
+        if (x > getmaxx()) {
+            x = 0;
+        }
+    }
+
+    closegraph();
+    return 0;
+}
