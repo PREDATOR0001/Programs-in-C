@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    double sum = 0.0;
+
+    // Input the range from the user
+    printf("Enter the range: ");
+    scanf("%d", &n);
+
+    // Calculate the harmonic series and its sum
+    printf("Harmonic Sequence is: ");
+    for (int i = 1; i <= n; i++) {
+        printf("1/%d", i);
+        if (i < n) {
+            printf(" + ");
+        }
+        sum += 1.0 / i;
+    }
+
+    // Output the sum of the harmonic series
+    printf("\nSum of harmonic series: %.6f\n", sum);
+
+    return 0;
+}
