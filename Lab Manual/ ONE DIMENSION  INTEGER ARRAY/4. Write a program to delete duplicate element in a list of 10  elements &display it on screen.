@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+// Function to remove duplicates from the array
+int removeDuplicates(int arr[], int n) {
+    if (n == 0 || n == 1) {
+        return n;
+    }
+
+    int temp[n];
+    int j = 0;
+
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] != arr[i + 1]) {
+            temp[j++] = arr[i];
+        }
+    }
+    temp[j++] = arr[n - 1];
+
+    for (int i = 0; i < j; i++) {
+        arr[i] = temp[i];
+    }
+
+    return j;
+}
+
+int main() {
+    int arr[10];
+    int n = 10;
+
+    // Input the elements of the array
+    printf("Enter 10 elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Sort the array to bring duplicates together
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] > arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    // Remove duplicates
+    n = removeDuplicates(arr, n);
+
+    // Output the result
+    printf("Array after removing duplicates:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
