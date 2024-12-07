@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    // Input two numbers
+    printf("Enter the first number: ");
+    scanf("%d", &a);
+    printf("Enter the second number: ");
+    scanf("%d", &b);
+
+    // Find the greatest number using the ternary operator
+    int greatest = (a > b) ? a : b;
+
+    printf("The greatest number is: %d\n", greatest);
+
+    return 0;
+}
