@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int divide(int a, int b) {
+    int quotient = 0;
+    int sign = ((a < 0) ^ (b < 0)) ? -1 : 1;
+    a = abs(a);
+    b = abs(b);
+
+    while (a >= b) {
+        a -= b;
+        quotient++;
+    }
+
+    return sign * quotient;
+}
+
+int main() {
+    int a, b;
+
+    // Input the values of a and b from the user
+    printf("Enter the dividend (a): ");
+    scanf("%d", &a);
+    printf("Enter the divisor (b): ");
+    scanf("%d", &b);
+
+    // Calculate the quotient
+    int quotient = divide(a, b);
+
+    // Output the result
+    printf("The quotient after dividing %d by %d is: %d\n", a, b, quotient);
+
+    return 0;
+}
