@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int x, y, result = 1;
+
+    // Input the values of x and y from the user
+    printf("Enter the base (x): ");
+    scanf("%d", &x);
+    printf("Enter the exponent (y): ");
+    scanf("%d", &y);
+
+    // Calculate x raised to the power y
+    for (int i = 1; i <= y; i++) {
+        result *= x;
+    }
+
+    // Output the result
+    printf("%d raised to the power %d is: %d\n", x, y, result);
+
+    return 0;
+}
