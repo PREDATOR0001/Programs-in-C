@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int num, digit;
+
+    // Input the five-digit number from the user
+    printf("Enter a five-digit number: ");
+    scanf("%d", &num);
+
+    // Check if the number is a five-digit number
+    if (num < 10000 || num > 99999) {
+        printf("Please enter a valid five-digit number.\n");
+        return 1;
+    }
+
+    // Display each digit on a new line
+    for (int i = 10000; i >= 1; i /= 10) {
+        digit = (num / i) % 10;
+        printf("%d\n", digit);
+    }
+
+    return 0;
+}
