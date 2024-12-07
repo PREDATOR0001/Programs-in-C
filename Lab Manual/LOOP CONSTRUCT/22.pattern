@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+// Function to generate and print the pattern for a given N
+void generate_pattern(int N) {
+    int size = 2 * N - 1;  // Size of the grid (2N-1 x 2N-1)
+    
+    // Generate the pattern row by row
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            // Calculate the value at position (i, j)
+            int value = (i < j ? i : j);      // Take the min of row and column index
+            value = (value < size - 1 - i ? value : size - 1 - i); // Compare with the other edges
+            value = (value < size - 1 - j ? value : size - 1 - j); // Compare with the other edges
+            value += 1;  // Add 1 to the value as the pattern starts at 1
+            printf("%d ", value);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int T;
+    // Input number of test cases
+    scanf("%d", &T);
+
+    // Process each test case
+    for (int t = 0; t < T; t++) {
+        int N;
+        // Input N for this test case
+        scanf("%d", &N);
+        
+        // Generate and print the pattern for the given N
+        generate_pattern(N);
+    }
+
+    return 0;
+}
