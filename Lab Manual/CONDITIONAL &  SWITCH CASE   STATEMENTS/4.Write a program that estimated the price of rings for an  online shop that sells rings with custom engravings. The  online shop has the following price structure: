@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int ringType, engravingUnits;
+    float totalCost;
+
+    // Display ring types
+    printf("Choose the type of ring:\n");
+    printf("1. Gold plated\n");
+    printf("2. Solid gold\n");
+    printf("3. Silver plated\n");
+
+    // Input the ring type and number of engraved units
+    printf("Enter the type of ring (1 for Gold plated, 2 for Solid gold, 3 for Silver plated): ");
+    scanf("%d", &ringType);
+    printf("Enter the number of engraved units: ");
+    scanf("%d", &engravingUnits);
+
+    // Calculate the total cost based on the ring type and engraving units
+    if (ringType == 1) {
+        // Gold plated ring
+        totalCost = 500 + (engravingUnits * 70.30);
+    } else if (ringType == 2) {
+        // Solid gold ring
+        totalCost = 1000 + (engravingUnits * 10.40);
+    } else if (ringType == 3) {
+        // Silver plated ring
+        totalCost = 300 + (engravingUnits * 5.10);
+    } else {
+        printf("Invalid ring type\n");
+        return 1;  // Exit the program if an invalid ring type is entered
+    }
+
+    // Output the total cost
+    printf("The total cost of the ring is: Rs. %.2f\n", totalCost);
+
+    return 0;
+}
