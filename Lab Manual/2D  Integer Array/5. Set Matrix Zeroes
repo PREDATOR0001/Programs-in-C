@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+// Function to set matrix zeros
+void setMatrixZeros(int matrix[][3], int m, int n) {
+    int row[m], col[n];
+    for (int i = 0; i < m; i++) {
+        row[i] = 0;
+    }
+    for (int j = 0; j < n; j++) {
+        col[j] = 0;
+    }
+
+    // Mark the rows and columns that need to be set to 0
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] == 0) {
+                row[i] = 1;
+                col[j] = 1;
+            }
+        }
+    }
+
+    // Set the marked rows and columns to 0
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (row[i] == 1 || col[j] == 1) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+}
+
+int main() {
+    int matrix[3][3] = {
+        {1, 1, 1},
+        {1, 0, 1},
+        {1, 1, 1}
+    };
+    int m = 3, n = 3;
+
+    setMatrixZeros(matrix, m, n);
+
+    printf("Output matrix:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
