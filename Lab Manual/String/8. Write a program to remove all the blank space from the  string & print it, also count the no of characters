@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to remove all blank spaces and count characters
+void removeSpacesAndCount(char str[]) {
+    int count = 0;
+    int j = 0;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] != ' ') {
+            str[j++] = str[i];
+            count++;
+        }
+    }
+    str[j] = '\0'; // Null-terminate the modified string
+
+    printf("Modified string: %s\n", str);
+    printf("Number of characters (excluding spaces): %d\n", count);
+}
+
+int main() {
+    char str[] = "This book is very easy";
+
+    printf("Original string: %s\n", str);
+
+    // Remove spaces and count characters
+    removeSpacesAndCount(str);
+
+    return 0;
+}
