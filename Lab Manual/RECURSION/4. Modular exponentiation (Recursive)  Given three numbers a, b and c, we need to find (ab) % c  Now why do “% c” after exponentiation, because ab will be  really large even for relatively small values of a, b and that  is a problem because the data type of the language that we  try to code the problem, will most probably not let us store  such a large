@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+// Function to perform modular exponentiation
+int modExp(int a, int b, int c) {
+    if (b == 0) {
+        return 1;
+    }
+    int half = modExp(a, b / 2, c);
+    int halfMod = (half * half) % c;
+    if (b % 2 != 0) {
+        halfMod = (halfMod * a) % c;
+    }
+    return halfMod;
+}
+
+int main() {
+    int a, b, c;
+
+    // Input the values of a, b, and c from the user
+    printf("Enter the value of a: ");
+    scanf("%d", &a);
+    printf("Enter the value of b: ");
+    scanf("%d", &b);
+    printf("Enter the value of c: ");
+    scanf("%d", &c);
+
+    // Calculate the result of (a^b) % c
+    int result = modExp(a, b, c);
+
+    // Output the result
+    printf("The result of (%d^%d) %% %d is: %d\n", a, b, c, result);
+
+    return 0;
+}
