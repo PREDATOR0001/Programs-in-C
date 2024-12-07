@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+// Function to implement wildcard pattern matching
+bool isMatch(const char *text, const char *pattern) {
+    if (*pattern == '\0') {
+        return *text == '\0';
+    }
+
+    if (*pattern == '*') {
+        return isMatch(text, pattern + 1) || (*text != '\0' && isMatch(text + 1, pattern));
+    }
+
+    if (*pattern == '?' || *pattern == *text) {
+        return isMatch(text + 1, pattern + 1);
+    }
+
+    return false;
+}
+
+int main() {
+    char text1[] = "baaabab";
+    char pattern1[] = "*****ba*****ab";
+    char pattern2[] = "baaa?ab";
+    char pattern3[] = "ba*a?";
+    char pattern4[] = "a*ab";
+
+    printf("Text: %s, Pattern: %s, Output: %s\n", text1, pattern1, isMatch(text1, pattern1) ? "true" : "false");
+    printf("Text: %s, Pattern: %s, Output: %s\n", text1, pattern2, isMatch(text1, pattern2) ? "true" : "false");
+    printf("Text: %s, Pattern: %s, Output: %s\n", text1, pattern3, isMatch(text1, pattern3) ? "true" : "false");
+    printf("Text: %s, Pattern: %s, Output: %s\n", text1, pattern4, isMatch(text1, pattern4) ? "true" : "false");
+
+    return 0;
+}
