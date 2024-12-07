@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+// Function to count the number of bits to be flipped
+int countBitsToFlip(int a, int b) {
+    int xor = a ^ b; // XOR of a and b will have set bits where a and b differ
+    int count = 0;
+
+    // Count the number of set bits in the XOR result
+    while (xor != 0) {
+        count += xor & 1;
+        xor >>= 1;
+    }
+
+    return count;
+}
+
+int main() {
+    int a, b;
+
+    // Input the values of A and B from the user
+    printf("Enter the value of A: ");
+    scanf("%d", &a);
+    printf("Enter the value of B: ");
+    scanf("%d", &b);
+
+    // Calculate the number of bits to be flipped
+    int bitsToFlip = countBitsToFlip(a, b);
+
+    // Output the result
+    printf("Number of bits to be flipped to convert %d to %d is: %d\n", a, b, bitsToFlip);
+
+    return 0;
+}
