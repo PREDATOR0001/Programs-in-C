@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+// Function to find the maximum profit
+int maxProfit(int prices[], int n) {
+    int maxProfit = 0;
+    for (int i = 1; i < n; i++) {
+        if (prices[i] > prices[i - 1]) {
+            maxProfit += prices[i] - prices[i - 1];
+        }
+    }
+    return maxProfit;
+}
+
+int main() {
+    int arr1[] = {100, 180, 260, 310, 40, 535, 695};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    printf("Maximum Profit for first example: %d\n", maxProfit(arr1, n1));
+
+    int arr2[] = {4, 2, 2, 2, 4};
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    printf("Maximum Profit for second example: %d\n", maxProfit(arr2, n2));
+
+    int arr3[] = {7, 1, 5, 3, 6, 4};
+    int n3 = sizeof(arr3) / sizeof(arr3[0]);
+    printf("Maximum Profit for third example: %d\n", maxProfit(arr3, n3));
+
+    return 0;
+}
