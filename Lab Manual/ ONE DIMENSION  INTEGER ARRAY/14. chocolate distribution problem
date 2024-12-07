@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to compare two integers for qsort
+int compare(const void *a, const void *b) {
+    return (*(int *)a - *(int *)b);
+}
+
+// Function to find the minimum difference
+int findMinDiff(int arr[], int n, int m) {
+    if (m == 0 || n == 0) {
+        return 0;
+    }
+
+    // Sort the array
+    qsort(arr, n, sizeof(int), compare);
+
+    // Find the minimum difference
+    int minDiff = INT_MAX;
+    for (int i = 0; i + m - 1 < n; i++) {
+        int diff = arr[i + m - 1] - arr[i];
+        if (diff < minDiff) {
+            minDiff = diff;
+        }
+    }
+
+    return minDiff;
+}
+
+int main() {
+    int arr[] = {12, 4, 7, 9, 2, 23, 25, 41, 30, 40, 28, 42, 30, 44, 48, 43, 50};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int m = 7; // Number of students
+
+    int minDiff = findMinDiff(arr, n, m);
+
+    printf("Minimum difference is: %d\n", minDiff);
+
+    return 0;
+}
