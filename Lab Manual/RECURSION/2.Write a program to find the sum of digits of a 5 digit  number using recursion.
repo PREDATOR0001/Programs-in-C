@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+// Function to find the sum of digits using recursion
+int sumOfDigits(int num) {
+    if (num == 0)
+        return 0;
+    return (num % 10) + sumOfDigits(num / 10);
+}
+
+int main() {
+    int num;
+
+    // Input the 5-digit number from the user
+    printf("Enter a 5-digit number: ");
+    scanf("%d", &num);
+
+    // Calculate the sum of digits
+    int sum = sumOfDigits(num);
+
+    // Output the result
+    printf("The sum of the digits of %d is: %d\n", num, sum);
+
+    return 0;
+}
