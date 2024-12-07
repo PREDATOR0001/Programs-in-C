@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to find the length of the Longest Common Subsequence (LCS)
+int lcs(char *S1, char *S2) {
+    int m = strlen(S1);
+    int n = strlen(S2);
+    
+    // Create a DP table to store the lengths of LCS
+    int dp[m + 1][n + 1];
+    
+    // Fill the DP table
+    for (int i = 0; i <= m; i++) {
+        for (int j = 0; j <= n; j++) {
+            if (i == 0 || j == 0) {
+                dp[i][j] = 0;  // LCS is 0 if one of the strings is empty
+            }
+            else if (S1[i - 1] == S2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;  // Characters match, increment the LCS length
+            }
+            else {
+                dp[i][j] = (dp[i - 1][j] > dp[i][j - 1]) ? dp[i - 1][j] : dp[i][j - 1];  // Otherwise, take the maximum
+            }
+        }
+    }
+
+    // The length of the longest common subsequence is in dp[m][n]
+    return dp[m][n];
+}
+
+int main() {
+    // Test cases
+    char S1[] = "AGGTAB";
+    char S2[] = "GXTXAYB";
+
+    int result = lcs(S1, S2);
+    printf("The length of the Longest Common Subsequence is: %d\n", result);
+
+    // Another example
+    char S1_2[] = "ABC";
+    char S2_2[] = "ACD";
+
+    result = lcs(S1_2, S2_2);
+    printf("The length of the Longest Common Subsequence is: %d\n", result);
+
+    return 0;
+}
