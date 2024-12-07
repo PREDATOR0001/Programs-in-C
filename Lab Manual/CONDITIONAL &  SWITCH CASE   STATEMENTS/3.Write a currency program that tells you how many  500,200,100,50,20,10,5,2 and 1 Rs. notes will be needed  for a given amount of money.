@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main() {
+    int amount;
+    int notes_500, notes_200, notes_100, notes_50, notes_20, notes_10, notes_5, notes_2, notes_1;
+
+    // Input the amount of money
+    printf("Enter the amount of money: ");
+    scanf("%d", &amount);
+
+    // Calculate the number of each denomination
+    notes_500 = amount / 500;
+    amount %= 500;
+
+    notes_200 = amount / 200;
+    amount %= 200;
+
+    notes_100 = amount / 100;
+    amount %= 100;
+
+    notes_50 = amount / 50;
+    amount %= 50;
+
+    notes_20 = amount / 20;
+    amount %= 20;
+
+    notes_10 = amount / 10;
+    amount %= 10;
+
+    notes_5 = amount / 5;
+    amount %= 5;
+
+    notes_2 = amount / 2;
+    amount %= 2;
+
+    notes_1 = amount;
+
+    // Output the number of each denomination
+    printf("500 Rs. notes: %d\n", notes_500);
+    printf("200 Rs. notes: %d\n", notes_200);
+    printf("100 Rs. notes: %d\n", notes_100);
+    printf("50 Rs. notes: %d\n", notes_50);
+    printf("20 Rs. notes: %d\n", notes_20);
+    printf("10 Rs. notes: %d\n", notes_10);
+    printf("5 Rs. notes: %d\n", notes_5);
+    printf("2 Rs. notes: %d\n", notes_2);
+    printf("1 Rs. notes: %d\n", notes_1);
+
+    return 0;
+}
