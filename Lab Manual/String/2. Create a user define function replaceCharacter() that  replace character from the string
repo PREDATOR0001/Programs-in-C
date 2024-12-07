@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+// Function to replace a character in a string
+void replaceCharacter(char str[], char oldChar, char newChar) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == oldChar) {
+            str[i] = newChar;
+        }
+    }
+}
+
+int main() {
+    char str[] = "This book is very easy";
+    char oldChar = 's';
+    char newChar = 'p';
+
+    printf("Original string: %s\n", str);
+
+    // Replace character
+    replaceCharacter(str, oldChar, newChar);
+
+    printf("Modified string: %s\n", str);
+
+    return 0;
+}
