@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+// Function to calculate the sum of the series using recursion
+double sumSeries(int n) {
+    if (n == 1) {
+        return 1.0;
+    }
+    if (n % 2 == 0) {
+        return -1.0 / n + sumSeries(n - 1);
+    } else {
+        return 1.0 / n + sumSeries(n - 1);
+    }
+}
+
+int main() {
+    int n;
+
+    // Input the value of N from the user
+    printf("Enter the value of N: ");
+    scanf("%d", &n);
+
+    // Calculate the sum of the series
+    double sum = sumSeries(n);
+
+    // Output the result
+    printf("The sum of the series up to %d is: %lf\n", n, sum);
+
+    return 0;
+}
+
