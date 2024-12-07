@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h> // For pow() function
+
+int main() {
+    float principal, rate, time, amount, compoundInterest;
+
+    // Ask the user for the principal amount, rate of interest, and time
+    printf("Enter the principal amount: ");
+    scanf("%f", &principal);
+
+    printf("Enter the rate of interest (in %%): ");
+    scanf("%f", &rate);
+
+    printf("Enter the time in years: ");
+    scanf("%f", &time);
+
+    // Calculate the amount after compound interest
+    amount = principal * pow((1 + rate / 100), time);
+
+    // Calculate the compound interest
+    compoundInterest = amount - principal;
+
+    // Display the result
+    printf("The compound interest is: %.2f\n", compoundInterest);
+    printf("The amount after compound interest is: %.2f\n", amount);
+
+    return 0;
+}
