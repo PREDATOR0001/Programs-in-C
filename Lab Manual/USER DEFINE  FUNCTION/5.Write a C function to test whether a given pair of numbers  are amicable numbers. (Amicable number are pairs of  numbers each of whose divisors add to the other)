@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+// Function to calculate the sum of proper divisors of a number
+int sumOfDivisors(int num) {
+    int sum = 0;
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+
+// Function to check if two numbers are amicable
+int areAmicable(int a, int b) {
+    return (sumOfDivisors(a) == b && sumOfDivisors(b) == a);
+}
+
+int main() {
+    int a, b;
+
+    // Input the pair of numbers from the user
+    printf("Enter the first number: ");
+    scanf("%d", &a);
+    printf("Enter the second number: ");
+    scanf("%d", &b);
+
+    // Check if the numbers are amicable
+    if (areAmicable(a, b)) {
+        printf("%d and %d are amicable numbers.\n", a, b);
+    } else {
+        printf("%d and %d are not amicable numbers.\n", a, b);
+    }
+
+    return 0;
+}
