@@ -9,7 +9,7 @@ if (*str)
 }
 int main()
 {
-char a[] = "Geeks for Geeks";
+char a[] = "Gupta for Geeks";
 reverse(a);
 return 0;
 }
